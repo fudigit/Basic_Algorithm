@@ -30,11 +30,8 @@ class Solution:
     @return: a middle node of the linked list
     """
     
-    '''
-    To get the Node of Linked List, use a pointer to loop through it
-    '''
-    
     # solution 1, fast and slow pointer start from node 1
+    # Note: to get the Node of Linked List, use a pointer to loop through it
     
     def middleNode(self, head):
         
@@ -49,3 +46,26 @@ class Solution:
             print('slow is %s' % (slow.val),'fast is %s' % (fast.val))
             
         return slow
+  
+  
+  
+class Solution2:
+    # solution 2: slow starts from ListNode 1, fast starts from ListNode 2
+    # odd: 1->2->3->null, fast stops at null
+    # even: 1->2->3->4->null, fast stops at the last node
+
+    def middleNode(self, head):
+        
+        fast, slow = head.next, head
+        
+        if head is None:
+            return None
+        
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+            print('slow is %s' % (slow.val),'fast is null = %s' % (fast is None))
+
+        return slow
+
+        
