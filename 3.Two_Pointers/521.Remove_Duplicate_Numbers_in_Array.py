@@ -4,9 +4,10 @@ class Solution:
     @return: the number of unique integers
     """
     def deduplication(self, nums):
-        
-        if nums is None:
-            return None
+        # 1. sort the data first! So the same numbers are together!
+        # 2. slow pointer points to the last unique integer, fast pointer loop through the
+        #    flat/increasing integers. 
+        # 3. If fast > slow integer, Let fast integer be the new last unique integer, slow ++
         
         if nums == []:
             return 0
