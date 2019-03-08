@@ -61,13 +61,13 @@ class Solution:
         self.quickSort(A, start, right)
         self.quickSort(A, left, end)
             
-        
+
+'''merge sort'''
 class Solution:
     """
     @param A: an integer array
     @return: nothing
     """
-    '''merge sort'''
     #repeatedly: 
     #  1. split the interval from the middle into 2 
     #  2. merge 2 intervals
