@@ -71,6 +71,7 @@ class Solution:
     #repeatedly: 
     #  1. split the interval from the middle into 2 
     #  2. merge 2 intervals
+    #  3. need an extra space of O(n) to store the 2 merged sorted list. Cannot do it in place.
     
     def sortIntegers2(self, A):
         # tmp is only used in the merge function to store sorted integers
@@ -114,8 +115,8 @@ class Solution:
             right_i += 1
             index += 1
         
-        # update array A within merge function, A stored merged result.
-        # tmp stores the 2 merged sorted list, everytime
+        # update array A within the merge function, so A stores merged result. If not, array A's interval is still not sorted.
+        # tmp stores the 2 merged sorted list, everytime a mergeSort is called. (can get overwritten)
         for i in range(start, end+1):
             A[i] = tmp[i]
     
