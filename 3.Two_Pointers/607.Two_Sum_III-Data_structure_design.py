@@ -37,3 +37,37 @@ class TwoSum:
             
         return False
         
+       
+class TwoSum:
+    '''
+       use list for add - O(1)
+       use sort + 2 pointers for find - O(nlogn)
+       
+       '''
+    # use__init__, list is defined for instances, not as a class attribute (share among intances)
+    def __init__(self):
+        self.n_dict = dict{}
+    
+    """
+    @param number: An integer
+    @return: nothing
+    """
+    def add(self, number):
+        if number in self.n_dict:
+            self.n_dict[number] += 1 
+        else:
+            self.n_dict[number] = 1
+
+    """
+    @param value: An integer
+    @return: Find if there exists any pair of numbers which sum is equal to the value.
+    """
+    def find(self, value):
+        
+        for key in self.n_dict.items()
+        
+        
+            
+        return False
+        
+        
