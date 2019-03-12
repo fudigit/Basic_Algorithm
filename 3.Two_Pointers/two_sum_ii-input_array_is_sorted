@@ -1,0 +1,27 @@
+class Solution:
+    """
+    2 pointers given array is alreay sorted
+    # starts from left and right end, forward left pointer if the sum < target, otherwise backward right pointer
+    """
+    
+    
+    """
+    @param nums: an array of Integer
+    @param target: target = nums[index1] + nums[index2]
+    @return: [index1 + 1, index2 + 1] (index1 < index2)
+    """
+    def twoSum(self, nums, target):
+        
+        l, r = 0, len(nums) - 1
+        
+        while l < r:
+            if nums[l] + nums[r] == target:
+                break
+            elif nums[l] + nums[r] > target:
+                r -= 1
+            else:
+                l += 1 
+                
+        return [l+1, r+1]
+        
+        # write your code here
