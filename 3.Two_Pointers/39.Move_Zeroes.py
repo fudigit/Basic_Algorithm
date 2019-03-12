@@ -29,7 +29,7 @@ class Solution:
     
     def moveZeroes(self, nums):
         '''
-        2 pointers, right pointer skip zeros
+        2 pointers, right pointer skips zeros
         # right pointer go right stops at where non-zero is found
         # left pointer swap with right every time when right stops, then both move 1 step forward
         '''
@@ -49,3 +49,32 @@ class Solution:
             l += 1
             
             #print(nums, r, l)
+            
+            
+class Solution:
+    """
+    @param nums: an integer array
+    @return: nothing
+    """
+    
+    def moveZeroes(self, nums):
+        '''
+        2 pointers, minimum operations
+        # store non-zero using left pointer, find non-zero using right pointer
+        # instead of swap, update left value when left points to non-zero, and to different index
+        other than right pointer
+        '''
+        l, r = 0, 0
+        
+        while r < len(nums):
+            if nums[r] != 0:
+                if l != r:
+                    # update only when l and r has different index, save operations
+                    nums[l] = nums[r]
+                # whenever r find a non-zero, l will move
+                l += 1
+            r += 1
+            
+        while l < len(nums):
+            nums[l] = 0
+            l += 1
