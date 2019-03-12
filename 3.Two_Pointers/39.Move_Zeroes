@@ -1,13 +1,14 @@
+'''No Guarantee of minimum operation'''
 class Solution:
     """
     @param nums: an integer array
     @return: nothing
     """
     def moveZeroes(self, nums):
-        # s pointer vs fast pointer
-        # s points the position where the non-zero integer will be stored
+        # slow pointer vs fast pointer
+        # s points to the position where the non-zero integer will be stored
         # f loops through the intger array, when points to non-zero integer, swap value with s
-        # this way, the value s being swaped is alway a non-zero
+        # this way, the value s being swaped with s is alway a non-zero
         
         s = 0
         f = 0
@@ -19,3 +20,32 @@ class Solution:
                 nums[s], nums[f] = nums[f], nums[s]
                 s += 1
             f += 1
+
+class Solution:
+    """
+    @param nums: an integer array
+    @return: nothing
+    """
+    
+    def moveZeroes(self, nums):
+        '''
+        2 pointers, right pointer skip zeros
+        # right pointer go right stops at where non-zero is found
+        # left pointer swap with right every time when right stops, then both move 1 step forward
+        '''
+        r = 0
+        l = 0
+        
+        while l < len(nums):
+            
+            # use l to find the first non-zero integer
+            while l < len(nums) - 1 and nums[l] == 0:
+                l += 1
+            
+            # swap the non-zero integer with l pointer
+            nums[r], nums[l] = nums[l], nums[r]
+            
+            r += 1
+            l += 1
+            
+            #print(nums, r, l)
