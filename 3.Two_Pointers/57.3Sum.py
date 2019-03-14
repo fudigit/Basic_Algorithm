@@ -6,7 +6,7 @@ O(1) extra space
 2. use 3 pointers, assume a<= b <= c, only worry about b and c on left of a
 3. for each a, fix a, find b.v + c.v = -a.v using 2 pointers, same as finding 2 sum
 4. uniqueness: when a triplets is found, skips the numbers that's already in the triplets
-
+Note: skip the redundancy during search! Better than search for all possible pairs and then delete the redundancies
 '''
 
 class Solution:
