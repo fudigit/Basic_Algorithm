@@ -4,7 +4,7 @@ use 2 pointers and number k to partition the array
 2. the set up of left and right pointer makes sure that: left side of left pointer <k, right side of right pointer >= k
 3. use l =< r for the while condition: so l is always on the first element of >= k
     i.e., l = i, r = i + 1 => l = i + 1, r = i
-          l = r = i => l = i + 1, r = i -1
+          l = r = i => l = i (since nums[l] < k), r = i -1
 4. if use l < r the while condition, l can either be on last of < k, or first of >= k
 '''
 
