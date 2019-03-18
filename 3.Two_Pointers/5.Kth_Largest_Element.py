@@ -1,0 +1,40 @@
+class Solution:
+    """
+    @param n: An integer
+    @param nums: An array
+    @return: the Kth largest element
+    """
+    def kthLargestElement(self, n, nums):
+        
+        
+        return self.quickSelect(n, nums, 0, len(nums)-1)
+    
+    
+    def quickSelect(self, k, nums, start, end):
+        # base case
+        if start >= end:
+            return nums[start]
+        
+        # perform a partition with 2 pointers
+        l, r = start, end
+        pivot = nums[(start+end)//2]
+        
+        while l <= r:
+            while l <= r and nums[l] < pivot:
+                l += 1
+            while l <= r and nums[r] > pivot:
+                r -= 1
+            while l <= r:
+                # nums[l] >= pivot and nums[r] <= pivot, swap so both go to the correct sides
+                nums[l] nums[r] = nums[r], nums[l]
+                l, r = l + 1, r - 1
+        print (nums, l, r)
+        if end - k + 1 >= l:
+            # if k is in the left interval, assuming asending array
+            return self.quickSelect(k, nums, l, end)
+        elif end - k + 1 <= r:
+            return self.quickSelect(k - (end - r), nums, start, r)
+            
+        return nums[r+1]
+        ,
+        # write your code here
