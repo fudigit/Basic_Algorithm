@@ -1,7 +1,9 @@
 '''
-quickSelect: return the actual value once kth largest is found
+Use the left end of interval as reference point for k. (k = 1, index = len(A) - 1  
 1. sort the array in asending order
-2. len(A) - k is the index of kth largest number
+2. use interval's right end as the reference point
+3. return the actual value once kth largest is found
+4. len(A) - k is the index of kth largest number
 note: after partition, kth largest many belong to left, right inteval, or stand along by itself
 '''
 
@@ -36,12 +38,18 @@ class Solution:
                 # nums[l] >= pivot and nums[r] <= pivot, swap so both go to the correct sides
                 nums[l], nums[r] = nums[r], nums[l]
                 l, r = l + 1, r - 1
-            print(nums, 'left',l,'right',r, 'start', start, 'end', end, 'k', k)
+            #print(nums, 'left',l,'right',r, 'start', start, 'end', end, 'k', k)
         if end - k + 1 >= l:
             # if k is in the left interval, assuming asending array
             return self.quickSelect(k, nums, l, end)
         elif end - k + 1 <= r:
+            # the reference point of k is no longer end, but r
             return self.quickSelect(k - (end - r), nums, start, r)
         # when there is element between l and r
         return nums[r+1]
-        
+    
+    
+    
+    
+    
+    
