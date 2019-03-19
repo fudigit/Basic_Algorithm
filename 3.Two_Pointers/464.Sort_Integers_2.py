@@ -1,5 +1,11 @@
 
 '''bubble sort'''
+'''
+1. raising the largest number from left to right of array take n-1 comparisions
+2. n - 1 raising is needed to sort all elements
+
+- O(n-1)*O(n-1) = O(n^2)
+'''
 
 class Solution:
     """
@@ -10,7 +16,7 @@ class Solution:
         if A == []:
             return A
             
-        # only need n - 1 times to sort the n-1 largest numbers
+        # only need n - 1 times to sort the n-1 largest numbers, j: round of raising, i/i+1: index of 2 elements for swap
         for j in range(len(A) - 1):
            for i in range(len(A) - 1):
                 if A[i] > A[i+1]:
@@ -22,12 +28,20 @@ class Solution:
                     
 '''quick sort'''
 
+'''
+Partition the array with a pivot
+1. use A[l] < pivot and A[r] > pivot to make sure the array is divided at the middle, not at ends
+   consider array [1,1,1,1], if A[l] <= pivot, l++, then l goes to the end, dead loop!
+2. use left <= right to make sure no intersection between left and right sides after splits!
+
+- O(nlogn), partition logn times, each time loop through n elements in total
+'''
+
 class Solution:
     """
     @param A: an integer array
     @return: nothing
     """
-    
     def sortIntegers2(self, A):
         if A == [] or A is None:
             return
@@ -49,6 +63,7 @@ class Solution:
         
         # partition
         while left <= right:
+            print(left, right)
             while left <= right and A[left] < pivot:
                 left += 1
             while left <= right and A[right] > pivot:
