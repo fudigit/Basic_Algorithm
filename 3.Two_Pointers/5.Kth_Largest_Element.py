@@ -53,6 +53,7 @@ class Solution:
     
 '''
 Use 0 as the reference point for k. 
+Partition the array with pivot, left side values < right side values, check which side k belongs and repeat partition.
 1. sort the array in asending order
 2. Transform "finding kth largest" to "finding element has index = (len(A) - k)"
 use 0 as the reference point for k. (k = 1, index = len(A) - 1).
