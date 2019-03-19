@@ -1,0 +1,26 @@
+class Solution:
+    """
+    @param colors: A list of integer
+    @param k: An integer
+    @return: nothing
+    """
+    def sortColors2(self, colors, k):
+        # write your code here
+        if colors = []:
+            return colors
+        start, end = 0, len(colors)-1
+        color_from, color_to = 1, k
+        
+        
+    def sortColor(self, colors, start, end, color_from, color_to):
+        # pivot color
+        pivot = (color_from + color_to)//2
+        l, r = start, end
+        
+        # partition based on the pivot color
+        while l <= r and color_from < color_to:
+            while l <= r and color[l] < pivot:
+                l += 1
+            while l <= r and color[r] > pivot:
+                r -= 1
+            
