@@ -1,7 +1,7 @@
 '''
-Use the left end of interval as reference point for k. (k = 1, index = len(A) - 1  
+Use the right end of interval as reference point for k
 1. sort the array in asending order
-2. use interval's right end as the reference point
+2. use interval's right end as the reference point for k. (k = 1, index = len(A) - 1  
 3. return the actual value once kth largest is found
 4. len(A) - k is the index of kth largest number
 note: after partition, kth largest many belong to left, right inteval, or stand along by itself
