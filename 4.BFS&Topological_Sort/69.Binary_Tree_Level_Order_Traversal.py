@@ -1,3 +1,9 @@
+'''
+For each level, add value for each node, and expand the son nodes for the next level
+1. Use deque to build a queue, right in, left out
+
+'''
+
 """
 Definition of TreeNode:
 class TreeNode:
@@ -5,6 +11,7 @@ class TreeNode:
         self.val = val
         self.left, self.right = None, None
 """
+# import deque
 from collections import deque
 class Solution:
     """
@@ -12,25 +19,29 @@ class Solution:
     @return: Level order a list of lists of integer
     """
     def levelOrder(self, root):
-        if root is None:
+        # if root is not none, 'if' converts object to boolean
+        if not root:
             return []
         
-        # initial of queue
-        queue = deque([root])
-        # hold the result
-        result = []
+        # use deque for queue, put root into the queue
+        queue = deque()
+        queue.append(root)
         
-        # for each level, expand the next level
-        while queue:
-            level = []
+        # list to store result
+        result = []
+
+        # for each level of the binary tree, expand the next level
+        while bool(queue):
+            list = []
             for _ in range(len(queue)):
                 node = queue.popleft()
-                level.append(node.val)
-                if node.left:
+                list.append(node.val)
+                
+                if bool(node.left):
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
             
-            result.append(level)
-            
+            result.append(list)
+                    
         return result
