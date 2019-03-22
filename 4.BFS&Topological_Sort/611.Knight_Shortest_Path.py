@@ -6,6 +6,10 @@ bfs, level order traveral + hashset for visted
     for each node in queue:
         check if the node reach destination
         then find its unvisited neighbors nodes, mark them as visisted and put them in queue
+
+follow up, speed up
+solution: double direction bfs
+
 '''
 
 """
