@@ -21,9 +21,6 @@ class Solution:
     @return: Any topological order for the given graph.
     """
     def topSort(self, graph):
-        
-        
-        
         # 1. count the indegree for all nodes
         node_to_indegree = self.get_indegree(graph)
         
@@ -42,8 +39,7 @@ class Solution:
                 node_to_indegree[neighbor] -= 1
                 if node_to_indegree[neighbor] == 0:
                     queue.append(neighbor)
-            
-        
+                    
         return topo_order
         
         
