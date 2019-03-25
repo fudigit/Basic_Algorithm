@@ -7,8 +7,12 @@ class Solution:
     @return: true if it can be reconstructed only one or false
     """
     def sequenceReconstruction(self, org, seqs):
-        if org == [] or seqs == []:
+        if org == [] and (seqs == [[]]):
+            return True
+
+        if org == [] and seqs != [] or (org != [] and seqs == []):
             return False
+        
         # get the graph (nodes and edges), count indegree
         # slow way, define 2 dict and 1 hashset
         node_to_indegree = {n: 0 for n in org}
@@ -25,6 +29,7 @@ class Solution:
         
         # topological sorting
         start_node = [n for n in org if node_to_indegree[n] ==0]
+
         queue = deque(start_node)
         re_seq = []
         
