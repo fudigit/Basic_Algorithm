@@ -1,3 +1,12 @@
+'''
+build node_to_neigh and node_to_degree in one pass
+# issues:
+# 1. node all nodes in seqs are captures, [[1]] will be missed
+# 2. use org to initialize the nodes and edges, it creates nodes that seqs don't have
+# work around: create a set to capture all the actual nodes in seqs, compare with org
+# better solution: create graph from seqs, not org
+'''
+
 from collections import deque
 
 class Solution:
