@@ -7,12 +7,7 @@ class Solution:
     @return: true if it can be reconstructed only one or false
     """
     def sequenceReconstruction(self, org, seqs):
-        #if org == [] and (seqs == [[]]):
-        #    return True
 
-        #if org == [] and seqs != [] or (org != [] and seqs == []):
-        #    return False
-        
         # get the graph (nodes and edges), count indegree
         # slow way, define 2 dict and 1 hashset
         node_to_indegree = {n: 0 for n in org}
@@ -20,6 +15,7 @@ class Solution:
         exist_edge = set()
         nodes_seq = set()
         for s in seqs:
+            # get all unique nodes in seqs
             nodes_seq = nodes_seq | set(s)
             for i in range(len(s)-1):
                 # since the nodes is initialized by org, check if seqs has invalid nodes
