@@ -48,3 +48,7 @@ class Solution:
             result.append(list)
                     
         return result
+    
+# follow up   
+# 1. don't use deque
+# 2. bottom-up level order traversal
