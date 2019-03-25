@@ -1,0 +1,45 @@
+from collections import deque
+
+class Solution:
+    """
+    @param org: a permutation of the integers from 1 to n
+    @param seqs: a list of sequences
+    @return: true if it can be reconstructed only one or false
+    """
+    def sequenceReconstruction(self, org, seqs):
+        if org == [] or seqs == []:
+            return False
+        # get the graph (nodes and edges), count indegree
+        # slow way, define 2 dict and 1 hashset
+        node_to_indegree = {n: 0 for n in org}
+        node_to_neigh = {n: [] for n in org}
+        exist_edge = set()
+        for s in seqs:
+            for i in range(len(s)-1):
+                if (s[i],s[i+1]) not in exist_edge:
+                    exist_edge.add((s[i],s[i+1]))
+                    node_to_neigh[s[i]].append(s[i+1])
+                    node_to_indegree[s[i+1]] += 1
+        
+        #print(node_to_indegree, node_to_neigh)
+        
+        # topological sorting
+        start_node = [n for n in org if node_to_indegree[n] ==0]
+        queue = deque(start_node)
+        re_seq = []
+        
+        while queue:
+            if len(queue) > 1:
+                return False
+            node = queue.popleft()
+            re_seq.append(node)
+            for neigh in node_to_neigh[node]:
+                node_to_indegree[neigh] -= 1
+                if node_to_indegree[neigh] == 0:
+                    queue.append(neigh)
+        #print(re_seq)
+        
+        # check if the result is org
+        if org == re_seq:
+            return True
+        return False
