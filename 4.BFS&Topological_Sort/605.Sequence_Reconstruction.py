@@ -7,20 +7,25 @@ class Solution:
     @return: true if it can be reconstructed only one or false
     """
     def sequenceReconstruction(self, org, seqs):
-        if org == [] and (seqs == [[]]):
-            return True
+        #if org == [] and (seqs == [[]]):
+        #    return True
 
-        if org == [] and seqs != [] or (org != [] and seqs == []):
-            return False
+        #if org == [] and seqs != [] or (org != [] and seqs == []):
+        #    return False
         
         # get the graph (nodes and edges), count indegree
         # slow way, define 2 dict and 1 hashset
         node_to_indegree = {n: 0 for n in org}
         node_to_neigh = {n: [] for n in org}
         exist_edge = set()
+        nodes_seq = set()
         for s in seqs:
+            nodes_seq = nodes_seq | set(s)
             for i in range(len(s)-1):
-                if (s[i],s[i+1]) not in exist_edge:
+                # since the nodes is initialized by org, check if seqs has invalid nodes
+                if s[i] not in node_to_neigh or s[i+1] not in node_to_neigh:
+                    return False
+                elif (s[i],s[i+1]) not in exist_edge:
                     exist_edge.add((s[i],s[i+1]))
                     node_to_neigh[s[i]].append(s[i+1])
                     node_to_indegree[s[i+1]] += 1
@@ -45,6 +50,6 @@ class Solution:
         #print(re_seq)
         
         # check if the result is org
-        if org == re_seq:
+        if org == re_seq and nodes_seq == set(org):
             return True
         return False
