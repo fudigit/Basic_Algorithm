@@ -1,6 +1,7 @@
 '''
-use prenode traversal
-# use a global variable depth to track the deepest tree level reached
+# user traversal
+# 1. use a global variable depth to track the deepest tree level reached
+# 2. similar to pre order traversal, track depth, then continue traverse left and right brach
 '''
 
 """
@@ -37,7 +38,7 @@ class Solution:
 use devide and conquer
 # 1. the depth of method node can be derived from the depth of left and right  child node: motherDepth = max(leftDepth, rightDepth) + 1
 # 2. must return something!
-# 3. similar to post order
+# 3. similar to post order traversal, get left and right, then merge the 2
 '''
 
 """
