@@ -36,7 +36,7 @@ class Solution:
         
 '''
 use devide and conquer
-# 1. the depth of method node can be derived from the depth of left and right  child node: motherDepth = max(leftDepth, rightDepth) + 1
+# 1. the depth of mother node can be derived from the depth of left and right child node: motherDepth = max(leftDepth, rightDepth) + 1
 # 2. must return something!
 # 3. similar to post order traversal, get left and right, then merge the 2
 '''
