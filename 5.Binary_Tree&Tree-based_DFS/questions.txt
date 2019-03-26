@@ -1,1 +1,2 @@
 In 97 maximum depth of binary tree, always define a instance variable self.result?
+https://www.imooc.com/article/14652
