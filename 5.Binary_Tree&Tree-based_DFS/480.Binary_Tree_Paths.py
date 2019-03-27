@@ -45,5 +45,52 @@ class Solution:
             paths.append(str(root.val) + '->' + path)
         
         return paths
+
+    
+    
+'''
+pre order traversal
+1. 3 important definitions for recursion
+2. define funciton to find all paths starting from a node
+
+Note:
+# 1. '->'.join(path), use -> to join the list of strings in path
+'''
+
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+class Solution:
+    """
+    @param root: the root of the binary tree
+    @return: all root-to-leaf paths
+    """
+    def binaryTreePaths(self, root):
+        result = []
+        if root == None:
+            return result
         
+        self.dfs_findPath(root, [str(root.val)], result)
+        return result
         
+    # given previous path and current node, 
+    def dfs_findPath(self, node, path, result):
+
+        if node.left == None and node.right == None:
+            result.append('->'.join(path))
+            return
+        
+        if node.left:
+            path.append(str(node.left.val))
+            self.dfs_findPath(node.left, path, result)
+            path.pop()
+            
+        if node.right:
+            path.append(str(node.right.val))
+            self.dfs_findPath(node.right, path, result)
+            path.pop()
