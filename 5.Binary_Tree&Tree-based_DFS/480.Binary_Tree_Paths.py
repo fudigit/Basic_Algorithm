@@ -2,6 +2,9 @@
 divide and conquer
 1. 3 important definitions for recursion
 2. How to track all the path? For each function call, use a new list to store all the paths.
+3. all paths for a given node is the union of the followings 2 sets of paths
+    - given node -> all paths for node.left
+    - given node -> all path for node.right
 
 Note:
 # 1. '->'.join(path), use -> to join the list of strings in path
