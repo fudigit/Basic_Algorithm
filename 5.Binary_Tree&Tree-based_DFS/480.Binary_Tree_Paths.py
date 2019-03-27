@@ -30,7 +30,7 @@ class Solution:
             return paths
             # leaf node
         if root.left == None and root.right == None:
-            paths.append("" + str(root.val))
+            paths.append(str(root.val) + "")
             return paths
         
         # 2. devide and solove
@@ -38,7 +38,7 @@ class Solution:
         left_paths = self.binaryTreePaths(root.left)
         right_paths = self.binaryTreePaths(root.right)
             # merge
-        for path in left_paths:
+        for path in left_paths:      #for leave node: left_paths is [], nothing is appendedd to paths
             paths.append(str(root.val) + '->' + path)
         
         for path in right_paths:
