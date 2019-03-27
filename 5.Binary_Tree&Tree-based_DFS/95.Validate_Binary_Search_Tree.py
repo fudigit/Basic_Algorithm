@@ -22,19 +22,20 @@ class Solution:
     @return: True if the binary tree is BST, or false
     """
     def isValidBST(self, root):
-        
         isBST, minNode, maxNode = self.divideConquer(root)
-        
         return isBST
-        
+    
+    # 1. Definition: given a tree node, return weather a BT, if yes, BT's max and min
     def divideConquer(self, node):
+        # 3. Exist
         if node == None:
             return True, None, None
-        
+        # 2. divide and solve
+        ## - conquer
         leftIsBST, leftMin, leftMax = self.divideConquer(node.left)
         rightIsBST, rightMin, rightMax = self.divideConquer(node.right)
-        print(leftIsBST,rightIsBST)
         
+        ## - merge
         # left or right subtree not BST
         if leftIsBST == False or rightIsBST == False:
             return False, None, None
@@ -45,7 +46,7 @@ class Solution:
         if rightMin != None and rightMin <= node.val:
             return False, None, None
         
-        # a valid BSF, get min and max for current tree
+        # a valid BSF, get min and max for the current tree
         if leftMin == None:     # no leftMind indicate no left branch
             minNode = node.val
         else:
