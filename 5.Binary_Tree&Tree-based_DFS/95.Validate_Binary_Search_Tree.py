@@ -60,4 +60,42 @@ class Solution:
         return True, minNode, maxNode
         
         
+'''
+In order traversal
+valid BST: its in order traversal is sorted in ascending order (necessary and sufficient)
+1. use lastNode to track the ascending order
+2. when is the node value visited and compared? when is the next value assigned?
+
+'''
+
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+class Solution:
+    """
+    @param root: The root of binary tree.
+    @return: True if the binary tree is BST, or false
+    """
+    def isValidBST(self, root):
+        self.isBST = True
+        self.lastNode = None
+        self.traverse(root)
+        return self.isBST
+        
+    def traverse(self, node):
+        if node == None:
+            return
+        
+        self.traverse(node.left)
+        if self.lastNode != None and self.lastNode >= node.val:
+            self.isBST = False
+            return
+        self.lastNode = node.val
+        self.traverse(node.right)
+        
         
