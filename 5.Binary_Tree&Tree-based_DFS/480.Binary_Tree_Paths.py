@@ -1,6 +1,7 @@
 '''
 divide and conquer
 1. 3 important definitions for recursion
+2. How to track all the path? For each function call, use a new list to store all the paths.
 
 Note:
 # 1. '->'.join(path), use -> to join the list of strings in path
