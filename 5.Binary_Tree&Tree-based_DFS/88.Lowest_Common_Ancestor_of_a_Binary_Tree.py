@@ -1,9 +1,9 @@
 '''
 # clear definition of recursion & what to return
-# 1. given a binary tree with root node, find LCA of child node A & B
+# 1. given a binary tree with root node, find the LCA of child node A & B
 # 1. if LCA if found, return LCA
-# 2. if A is found, return A
-# 3. if B is found, return B
+# 2. if only A is found, return A (root == A)
+# 3. if only B is found, return B
 # 4. if nothing is found, return None
         
 '''
