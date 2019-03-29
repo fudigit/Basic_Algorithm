@@ -6,8 +6,6 @@
 3. when 1 list runs out, cur.next = None. Therefore link cur to the head of remaining list
 '''
 
-
-
 '''
 use dummy head
 '''
@@ -53,7 +51,6 @@ class Solution:
 '''
 creat actual head
 '''
-
 """
 Definition of ListNode
 class ListNode(object):
