@@ -1,5 +1,48 @@
 '''
-in place
+Divide and conquer
+Definition: restructure the tree/subtree(), return the last node in preorder
+'''
+
+"""
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+class Solution:
+    """
+    @param root: a TreeNode, the root of the binary tree
+    @return: nothing
+    """
+    def flatten(self, root):
+        if root == None:
+            return root
+        
+        left_last = self.flatten(root.left)
+        right_last = self.flatten(root.right)
+        
+        # restructure
+        if left_last != None:
+            left_last.right = root.right
+            root.right = root.left
+            root.left = None
+        
+        # return last node. (exists right branch, no right branch but left branch, leaf node)
+        if right_last != None:
+            return right_last
+        
+        if left_last != None:
+            return left_last
+            
+        if right_last == None and left_last == None:
+            return root
+            
+            
+
+'''
+in place, this requires extra log(h) memory due to recursion
 # trim the right branch, so linking node to the right of last_node does not change right branch 
 '''
 
