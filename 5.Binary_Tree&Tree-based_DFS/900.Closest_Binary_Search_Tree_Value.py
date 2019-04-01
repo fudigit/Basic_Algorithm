@@ -1,7 +1,8 @@
 '''
-non recursion, find upper and lower of target
+non recursion, find upper and lower bound of target
 upper = biggest value <= target
 lower = smallest value > target
+O(h) = O(h) + O(h)
 '''
 
 """
@@ -62,3 +63,5 @@ class Solution:
         if last_node:
             return last_node.val
         return None
+    
+# follow up, do it in one pass
