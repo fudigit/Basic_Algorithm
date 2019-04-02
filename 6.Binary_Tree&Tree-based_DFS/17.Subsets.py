@@ -14,16 +14,13 @@ class Solution:
     @return: A list of lists
     """
     def subsets(self, nums):
-        
         results = []
         if nums == None:
             return results
-        
         nums.sort()
         
         self.dfs(nums, 0, [], results)
         return results
-        
         
     # 1. definition of recursion
     # 以 subset 开头的，配上nums以index开始的数的所有组合放到 results 里
