@@ -72,7 +72,7 @@ class Solution:
         for i in range(startIndex, len(nums), 1):
             # [1] => [1,2]
             # 去寻找以 [1,2] 开头的所有子集
-            subset.append(nums[i])
+            subset.append(nums[i])         # all subsets starts from [1], [2], [3] are found!
             self.dfs(nums, i + 1, subset, results)
             # [1,2] => [1], 下一个dfs状态和这次相同：[1] => [1,3]
             subset.pop() #backtracking
