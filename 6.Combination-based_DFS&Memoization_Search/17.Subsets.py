@@ -39,4 +39,43 @@ class Solution:
         # does not pick nums[index]
         subset.pop()
         self.dfs(nums, index + 1, subset, results)
+        
+        
+'''
+# 排列搜索类递归
+# use dfs to find all subsets based on a fixed head-subset
+[]
+
+'''
+
+class Solution:
+    """
+    @param nums: A set of numbers
+    @return: A list of lists
+    """
+    def subsets(self, nums):
+        results = []
+        if nums == None:
+            return results
+        
+        nums.sort()
+        self.dfs(nums, 0, [], results)
+        return results
+        
+    # defintion of recursion
+    # 寻找以subset开头，与nums[index]及之后数字形成的所有子集，加入到results
+    def dfs(self, nums, startIndex, subset, results):
+        # each subset is a valid combination
+        # subset 的地址被传到下一层，所以要深考
+        results.append(subset[:])
+        
+        for i in range(startIndex, len(nums), 1):
+            # [1] => [1,2]
+            # 去寻找以 [1,2] 开头的所有子集
+            subset.append(nums[i])
+            self.dfs(nums, i + 1, subset, results)
+            # [1,2] => [1], 下一个dfs状态和这次相同：[1] => [1,3]
+            subset.pop() #backtracking
+            
+        
             
