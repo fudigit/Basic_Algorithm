@@ -1,3 +1,8 @@
+'''
+# 1. skip the repeated number in the the same level ('for' loop).
+# 2. adding repeated number into the next level is allowed!
+'''
+
 class Solution:
     """
     @param candidates: A list of integers
