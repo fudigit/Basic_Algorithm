@@ -5,7 +5,7 @@ class Solution:
     @return: A list of lists of integers
     """
     def combinationSum(self, candidates, target):
-        candidates = sorted(list(set(candidates)))
+        candidates = sorted(list(set(candidates)))    # set is use to rid of unique
         results = []
         #self.level = 0      #check tree depth
         self.dfs(candidates, target, 0, [], results)
