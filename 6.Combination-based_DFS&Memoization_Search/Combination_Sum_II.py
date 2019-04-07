@@ -1,23 +1,30 @@
-class Solution:    
+class Solution:
     """
-    @param candidates: Given the candidate numbers
-    @param target: Given the target number
-    @return: All the combinations that sum to target
+    @param candidates: A list of integers
+    @param target: An integer
+    @return: A list of lists of integers
     """
-    def combinationSum2(self, candidates, target): 
-        # write your code here
-        candidates.sort()        
-        self.ans, tmp, use = [], [], [0] * len(candidates)        
-        self.dfs(candidates, target, 0, 0, tmp, use)        
-        return self.ans    
-    def dfs(self, can, target, p, now, tmp, use):        
-        if now == target:            
-            self.ans.append(tmp[:])            
-            return        
-        for i in range(p, len(can)):            
-            if now + can[i] <= target and (i == 0 or can[i] != can[i-1] or use[i-1] == 1):                
-                tmp.append(can[i])
-                use[i] = 1                
-                self.dfs(can, target, i+1, now + can[i], tmp, use)                
-                tmp.pop()                
-                use[i] = 0
+    def combinationSum2(self, candidates, target):
+        candidates = sorted(list((candidates)))
+        results = []
+        #self.level = 0      #check tree depth
+        self.dfs(candidates, target, 0, [], results)
+        return results
+        
+    def dfs(self, candidates, target, start, combination, results):
+        #self.level += 1
+        if target == 0:
+            return results.append(list(combination)) # return, so no need to start another loop
+            
+        for i in range(start, len(candidates)):
+            #print('i=', i, 'candi=',candidates[i], 'target=', target, 'start=', start, combination, 'level=', self.level)
+            if candidates[i] == candidates[i-1] and i > start:
+                continue
+            
+            if target < candidates[i]:
+                return
+            
+            combination.append(candidates[i])
+            self.dfs(candidates, target - candidates[i], i+1, combination, results)
+            combination.pop()
+            #self.level -= 1
