@@ -5,7 +5,7 @@ some iterations from 17.Subsuets will add duplicates, how to avoid?
 2. for a new recursion(another tree level), always add the first element, no matter dup or not.
 
 Method 2:
-如果前面相同的数没有选，后面的数就不能选。 [1,1,1] 如果第一个1没有选，那么for循环中就不能选第二个1
+如果前面相同的数没有选，后面的数就不能选。 [1,1,1] 如果第一个1没有选，那么for循环中就不能选第二个1, i != startindex，说明跳数
 '''
 
 class Solution:
