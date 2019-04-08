@@ -1,3 +1,7 @@
+'''
+# treat x* as a whole
+'''
+
 class Solution:
     """
     @param s: A string 
