@@ -10,6 +10,8 @@ i.e, [1,2,2']
 # - we only pick path 1, so in the for loop, if previous # is the same and has not been visited, skip
 # - note the number need to be sorted, so the same nums are together
 
+# if nums = [1,1,1,1,1,1], O(n^2): n level, n traversal in each level
+# in general, O(S * n^2), S is # of solutions, it take n^2 time to find one path
 '''
 
 
