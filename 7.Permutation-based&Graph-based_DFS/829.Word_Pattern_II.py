@@ -1,5 +1,6 @@
 '''
-# not sure how this DFS work
+# how does this DFS work on examples
+# slow
 '''
 
 class Solution:
