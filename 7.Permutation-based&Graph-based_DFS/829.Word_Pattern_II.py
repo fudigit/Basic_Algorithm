@@ -1,3 +1,7 @@
+'''
+# not sure how this DFS work
+'''
+
 class Solution:
     """
     @param pattern: a string,denote pattern string
