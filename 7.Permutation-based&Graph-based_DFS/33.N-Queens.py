@@ -7,7 +7,7 @@ i.e., [1,3,0,2] -> (0,1), (2,3), (3,0), (4,2) has a queen
 # 2. Use a drawChessboard function to draw the chessBoard
 # 3. Use a isValid function make sure the queen on next row cannot attack any previous qeen
 
-# O(n*n*n)?
+# O(n*n  *n)?
 # how to use set to reduce time complexity
 '''
 
