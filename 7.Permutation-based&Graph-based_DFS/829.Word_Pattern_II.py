@@ -1,6 +1,10 @@
 '''
-# how does this DFS work on examples
-# slow
+how to determine the pattern corresponds to which word? (ababa -> redblueredbluered, {a:red})
+try each word for pattern using dfs!
+1. if a pattern is in the mapping, check if pattern matches the head of string
+2. if a pattern is not in the mapping, try each word in the remaining string(expect for used word)
+    - if the word is alreay a value in mapping, it cannot be value for a second key
+3. return true or false for 1 and 2
 '''
 
 class Solution:
