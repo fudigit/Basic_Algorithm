@@ -4,7 +4,10 @@ error:
 2. convert result to list
 3. not in visited or in visited
 4. not in board or in board
-4. string has not pop
+5. string has not pop
+6, visited starts with {(i, j)}
+7. when added a word to result, return not required, since long one may exists
+8, do next dfs on x_, y_, not x, y!
 '''
 
 class Solution:
@@ -29,8 +32,8 @@ class Solution:
         for i in range(len(board)):
             for j in range(len(board[0])):
                 char = board[i][j]
-                print(char)
-                self.dfs_findPath(board, i, j, char, words_dict, prefix_dict, set(), results)
+                #print(char)
+                self.dfs_findPath(board, i, j, char, words_dict, prefix_dict, set([(i,j)]), results)
                 
         return list(results) # convert since results is a set!
         
@@ -39,7 +42,7 @@ class Solution:
     def dfs_findPath(self, board, x, y, word, words_dict, prefix_dict, visited, results):
         if word in words_dict:
             results.add(word)
-            return
+        
         if word not in prefix_dict:
             return
             
@@ -53,8 +56,8 @@ class Solution:
                 
             visited.add((x_, y_))
             #word_added = word + board[x_][y_]
-            print(board[x_][y_],x_, y_,'hey', visited)
-            self.dfs_findPath(board, x, y, word + board[x_][y_], words_dict, prefix_dict, visited, results)
+            #print(board[x_][y_],x_, y_,'hey', visited, word + board[x_][y_])
+            self.dfs_findPath(board, x_, y_, word + board[x_][y_], words_dict, prefix_dict, visited, results)
             #word_added.pop()
             visited.remove((x_, y_))
                 
