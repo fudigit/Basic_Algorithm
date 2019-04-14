@@ -3,7 +3,7 @@ use dfs + hash table
 # 1. construct a prefix dict to check if the itermediate search result is on the right path
 # 2. do search for every char in the board
 # 3. if the path starts with the char exists in prefix, continue search in all directions
-In gnenral, time complexity is hard to determine for search problem
+In gnenral, search problem has time complexity of NP time: 2^n, n!, C(n,m). Polinolial time: n^K
 '''
 
 '''
