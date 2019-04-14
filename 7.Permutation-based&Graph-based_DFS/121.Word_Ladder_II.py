@@ -19,7 +19,9 @@ logic
 '''
 
 '''
-why not use BFS directly? - will get into the paths that won't lead to the shortest path
+why not use BFS directly? - try use it directly, shall work, but slow
+- will get into the paths that won't lead to the shortest path, in bfs, each node is a paths
+- get the distance to the end with BFS, helps avoid picking longer path in DFS (2 BFS should also work)
 '''
 from collections import deque
 class Solution:
