@@ -1,0 +1,70 @@
+'''
+BFS + DFS on graph
+1. BFS from end to start, count each node's distance to end, saving a distance hashmap
+2. DFS from start to end, ensure every step make the distance to end closer!
+3. finding next_words: every ward has L char, each char has 25 changes, new word shall in dict
+
+errors
+1. how to import deque
+2. run identation when defining the function
+
+logic
+1. in bfs, if next_word is already in distance hashmap, skip it, since it's going back in graph
+    - direction of deque for FIFO? Both work: Left in right out; right in left out
+    - use distance hashmap = {}: 1. avoid go back in graph, 2. track the steps to target
+        - in Word Latter 1, used visted = set() to avoid go back in the graph
+    - not level order traversal required
+2. in dfs, would the distance[next_word] != distance[start] - 1 garantee there is no turning back in graph?
+3. what's the purpose of dfs?
+'''
+
+'''
+why not use BFS directly? - will get into the paths that won't lead to the shortest path
+'''
+from collections import deque
+class Solution:
+    """
+    @param: start: a string
+    @param: end: a string
+    @param: dict: a set of string
+    @return: a list of lists of string
+    """
+    def findLadders(self, start, end, dict):
+    # main
+        dict.add(start) # may start from the end
+        dict.add(end)
+        distance = self.bfs_getDistance(end, start, dict)
+        #print(distance)
+        
+        results = []
+        path = [start]
+        self.dfs_findPath(start, end, dict, distance, path, results)
+        
+        return results
+    
+    # do a bfs from target to start, get the distance from node to the target
+    def bfs_getDistance(self, start, end, dict):
+        distance = {}
+        queue = deque([start])
+        distance[start] = 0
+        while queue:
+            for _ in range(len(queue)): # can work without level order traversal
+                word = queue.popleft()
+                next_words = self.find_nextWords(word, dict)
+                for next_word in next_words: 
+                    if next_word not in distance: # if _next_word already in distance, it's visited
+                        distance[next_word] = distance[word] + 1
+                        queue.append(next_word)
+        return distance
+    
+    # get the next word
+    def find_nextWords(self, word, dict):
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
+        next_words = []
+        for i in range(len(word)):
+            for char in alphabet:
+                next_word = word[:i] + char + word[i+1:] #replace ith letter with char
+                if next_word != word and next_word in dict: #only prevent getting the same word
+                    next_words.append(next_word)
+        return next_words
+                
