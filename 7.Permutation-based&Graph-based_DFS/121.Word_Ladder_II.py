@@ -6,7 +6,8 @@ BFS + DFS on graph
 
 errors
 1. how to import deque
-2. run identation when defining the function
+2. wrong identation when defining the function
+3. deep copy in dfs
 
 logic
 1. in bfs, if next_word is already in distance hashmap, skip it, since it's going back in graph
