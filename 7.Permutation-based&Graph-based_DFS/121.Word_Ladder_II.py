@@ -16,12 +16,13 @@ logic
     - not level order traversal required
 2. in dfs, would the distance[next_word] != distance[start] - 1 garantee there is no turning back in graph?
 3. what's the purpose of dfs?
-'''
 
-'''
+review
 why not use BFS directly? - try use it directly, shall work, but slow
 - will get into the paths that won't lead to the shortest path, in bfs, each node is a paths
 - get the distance to the end with BFS, helps avoid picking longer path in DFS (2 BFS should also work)
+- BFS 在树上，在图上还是不熟， 什么时候可以不用level order traversal，deque怎么使用，怎么根据当前层找出下一层，避免往回走
+- DFS 在图上，需要哪些参数?(cur, end), dict, distance, (path, result)如何避免往回走？什么时候需要deepcopy？
 '''
 from collections import deque
 class Solution:
@@ -70,3 +71,20 @@ class Solution:
                     next_words.append(next_word)
         return next_words
                 
+
+    # dfs with contraint to always reduce distance to the target 
+    # find the shortest path to target from the current word: curt, append the path to results
+    def dfs_findPath(self, curt, end, dict, distance, path, results):
+        if curt == end:
+            results.append(list(path))  # deep copy!
+            return
+        
+        next_words = self.find_nextWords(curt, dict)
+        for next_word in next_words:
+            if distance[next_word] != distance[curt] - 1:  # will this guarantee no turning back?
+                continue
+            path.append(next_word)
+            #print(next_word, path)
+            self.dfs_findPath(next_word, end, dict, distance, path, results)
+            path.pop()
+            
