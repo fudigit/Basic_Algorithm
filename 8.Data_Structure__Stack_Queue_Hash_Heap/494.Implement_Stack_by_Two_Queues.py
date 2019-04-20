@@ -1,5 +1,9 @@
 '''
-initialize 2 queues, use queue_1 to store all the items, use queue_2 to store previous items from queue_1 when visiting the 'last_in' of queue_1
+initialize 2 queues, use queue_1 to store all the items, use queue_2 to store previous items from queue_1 
+    when visiting the 'last_in' of queue_1
+1. Create 2 queues with __init__ method
+2. Create method to get the Last item in queue 1
+3. Create method to swap 2 queues
 '''
 from collections import deque
 
