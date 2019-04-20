@@ -25,7 +25,7 @@ class Queue:
         head = self.dummy.next
         self.dummy.next = self.dummy.next.next
         
-        if self.dummy.next is None:
+        if self.dummy.next is None:   #when the only node in queue is deleted, dummy and tail coincide
             self.tail = self.dummy
         return head.val
         
