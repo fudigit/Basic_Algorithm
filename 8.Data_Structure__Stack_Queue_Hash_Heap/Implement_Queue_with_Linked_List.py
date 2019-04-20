@@ -15,24 +15,36 @@ class Queue:
         self.tail = self.dummy
     
     # link the node, move the pointer tail
-    def enqueue(self, x):
-        self.tail.next = QueueNode(x)
-        self.tail = self.tail.next
+    def enqueue(self, val):
+        node = QueueNode(val)
+        self.tail.next = node # tail.next = is to link the node
+        self.tail = self.tail.next  # tail = is to point to a different node
         
-        
+    # pop the head, return the value of head
     def dequeue(self):
         head = self.dummy.next
-        self.dummy.next = dummy.next.next
+        self.dummy.next = self.dummy.next.next
         
         if self.dummy.next is None:
             self.tail = self.dummy
-        return head
+        return head.val
         
     def peek(self):
-        
-        return dummy.next.val
+        return self.dummy.next.val
     
     def isEmpty(self):
-        if dummy.next == None:
+        if self.dummy.next == None:
             return True
         return False
+        
+q = Queue()
+q.enqueue('111')
+q.peek()  
+q.enqueue('test node value')      
+q.peek()
+q.dequeue()
+q.peek()
+q.dequeue()
+q.isEmpty()
+        
+        
