@@ -45,6 +45,42 @@ class Solution:
                 curr = curr.next
                 
         return Heads
+    
+    
+    
+    
+    '''
+    only create new hashTable, do not open other space
+    '''
+    
+    # add node to the tail node of linked list: if node links to the next node, point to the next node. 
+    #                                            if node.next is None, tail found! add to be the last node
+    class Solution:
+    def addlistnode(self, node, number):
+        if node.next != None:
+            self.addlistnode(node.next, number)
+        else:
+            node.next = ListNode(number)
+
+    # calc index of node.val in the new hashTable, add node into new hashTable
+    # if adding the first node, just add, else, find the tail of the linked list.
+    def addnode(self, anshashTable, number):
+        p = number % len(anshashTable)
+        if anshashTable[p] == None:
+            anshashTable[p] = ListNode(number)
+        else:
+            self.addlistnode(anshashTable[p], number)
+
+    # traver each head node in the old HashTable, for each node, traverse the old linked list, add node to the new hashTable
+    def rehashing(self,hashTable):
+        HASH_SIZE = 2 * len(hashTable)
+        anshashTable = [None for i in range(HASH_SIZE)]
+        for item in hashTable:
+            p = item
+            while p != None:
+                self.addnode(anshashTable,p.val)
+                p = p.next
+        return anshashTable
                     
         
         
