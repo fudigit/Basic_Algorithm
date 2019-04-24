@@ -3,6 +3,9 @@ use a maximum heap, the root is the kth largest distanced point so far
 - the result needs to be sorted by dis, x, y
 - use -dis, -x, -y to turn the min heap to a "max heap"
 - -dis is the root of min heap, dis is the largest
+
+
+O(nlogk + klogk)
 '''
 
 """
