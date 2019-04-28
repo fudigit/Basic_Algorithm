@@ -8,6 +8,8 @@ def: prefix[i] = A[0] + A[1] + A[2] + ... + A[i-1], prefix[0] = 0
 sum(i to j) = prefix[j+1] - prefix[i] = A[i] + A[i+1] + ... + A[j]
 
 getting the max_sum: prefix[j] - min(prefix{0~j-1})
+
+O(n)
 '''
 
 class Solution:
