@@ -75,7 +75,7 @@ class Solution:
     @return: The head of one sorted list.
     """
     def mergeKLists(self, lists):
-        while len(lists) > 1:
+        while len(lists) > 1:       # dead loop
             
             new_lists = []
             for i in range(1, len(lists), 2):
