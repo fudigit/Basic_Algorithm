@@ -118,6 +118,70 @@ class Solution:
         if curr2:
             tra.next = curr2
         return dummy.next
+    
+    
+'''
+v3. divide and conquer
+1. divide the lists into left part and right part, than merge them into one
+2. no need to divide the actual list, just need to divide the index interval of k nodes
+类似归并排序
+'''
+
+"""
+Definition of ListNode
+class ListNode(object):
+
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+"""
+import heapq
+class Solution:
+    """
+    @param lists: a list of ListNode
+    @return: The head of one sorted list.
+    """
+    def mergeKLists(self, lists):
+        if not lists:
+            return None
+        
+        node_head = self.divideAndMerge(lists, 0, len(lists) - 1)
+        return node_head
+        
+    def divideAndMerge(self, lists, start, end):
+        # when only one node left, use that node
+        if start == end:
+            return lists[start]
+        
+        mid = start + (end - start)//2
+        leftNode = self.divideAndMerge(lists, start, mid)
+        rightNode = self.divideAndMerge(lists, mid + 1, end)
+        
+        mergedListNode = self.merge2Lists(leftNode, rightNode)
+        
+        return mergedListNode
+        
+    def merge2Lists(self, l1, l2):
+        dummy = ListNode(0)
+        tra = dummy
+        curr1 = l1
+        curr2 = l2
+        
+        while curr1 and curr2:
+            if curr1.val <= curr2.val:
+                tra.next = curr1
+                tra = tra.next
+                curr1  = curr1.next
+            else:
+                tra.next = curr2
+                tra = tra.next
+                curr2 = curr2.next
+        if curr1:
+            tra.next = curr1
+        if curr2:
+            tra.next = curr2
+        return dummy.next
+
 
                 
         
