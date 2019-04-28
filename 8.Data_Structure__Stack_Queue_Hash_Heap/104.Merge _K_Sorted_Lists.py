@@ -50,3 +50,65 @@ class Solution:
     def heappushNode(self, heap, node):
         self.index += 1 # so when node.val tie, no need to compare nodes
         heapq.heappush(heap,(node.val, self.index, node))
+        
+
+
+'''
+v.2 merge by 2 lists for each level, until get 1 list
+
+if keep merging the 2 left most lists, (merge N and 1 and 1 and 1 and ....), takes O(Nk)
+if each list length is (N/k), 2N/k, 3N/k, kN/k
+'''
+
+
+"""
+Definition of ListNode
+class ListNode(object):
+
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+"""
+class Solution:
+    """
+    @param lists: a list of ListNode
+    @return: The head of one sorted list.
+    """
+    def mergeKLists(self, lists):
+        while len(lists) > 1:
+            
+            new_lists = []
+            for i in range(1, len(lists), 2):
+                print(i)
+                merged2 = self.merge2Lists(lists[i - 1], lists[i])
+                new_lists.append(merged2)
+                print(new_lists)
+                
+                if len(lists) % 2 == 1:
+                    new_lists.append(lists[-1])
+            lists = new_lists
+        
+        return lists[0]
+        
+
+    def merge2Lists(self, l1, l2):
+        dummy = ListNode(0)
+        tra = dummy
+        curr1 = l1
+        curr2 = l2
+        
+        while curr1 and curr2:
+            if curr1.val <= curr2.val:
+                tra.next = curr1
+                tra = tra.next
+                curr1  = curr1.next
+            else:
+                tra.next = curr2
+                tra = tra.next
+                curr2 = curr2.next
+        if curr1:
+            tra.next = curr1
+        if curr2:
+            tra.next = curr2
+        return dummy.next
+
