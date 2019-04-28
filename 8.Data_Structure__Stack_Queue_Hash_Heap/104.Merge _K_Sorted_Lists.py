@@ -54,12 +54,20 @@ class Solution:
 
 
 '''
-v.2 merge by 2 lists for each level, until get 1 list
+merge by 2 lists for each level, until get 1 list
+if each list length is N/k, where N = total number of nodes, 
+1. merging 2 list takes 2N/k, merging each level take k*N/k or (k-1)* N/k, about N
+2. there are maximum logk levels
+O(Nlogk)
 
-if keep merging the 2 left most lists, (merge N and 1 and 1 and 1 and ....), takes O(Nk)
-if each list length is (N/k), 2N/k, 3N/k, kN/k
+merging to left most linked list, 1 by 1
+if left most list has length N, rest list has length 1 (merge N and 1 and 1 and ....), takes O(Nk)
+if each list length is (N/k)
+1. merging takes 2N/k + 3N/k + ... + KN/k
+
+bug
+1. if odd number of lists, add the last list is after the for loop!
 '''
-
 
 """
 Definition of ListNode
@@ -69,23 +77,22 @@ class ListNode(object):
         self.val = val
         self.next = next
 """
+import heapq
 class Solution:
     """
     @param lists: a list of ListNode
     @return: The head of one sorted list.
     """
     def mergeKLists(self, lists):
-        while len(lists) > 1:       # dead loop
+        while len(lists) > 1:
             
             new_lists = []
             for i in range(1, len(lists), 2):
-                print(i)
                 merged2 = self.merge2Lists(lists[i - 1], lists[i])
                 new_lists.append(merged2)
-                print(new_lists)
-                
-                if len(lists) % 2 == 1:
-                    new_lists.append(lists[-1])
+            if len(lists) % 2 == 1:
+                new_lists.append(lists[-1])
+            
             lists = new_lists
         
         return lists[0]
@@ -112,3 +119,5 @@ class Solution:
             tra.next = curr2
         return dummy.next
 
+                
+        
