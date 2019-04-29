@@ -46,3 +46,8 @@ class Solution:
             return id1 + 1, id2
         elif id1 == id2:
             return id1, id2
+        
+        
+'''
+use tuple to get prefix_sum and index, this is better then hashtable, since can record index for dups!
+'''
