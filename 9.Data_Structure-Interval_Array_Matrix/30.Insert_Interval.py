@@ -1,3 +1,6 @@
+'''
+first trail
+'''
 """
 Definition of Interval.
 class Interval(object):
@@ -32,6 +35,7 @@ class Solution:
             
   
 '''
+shorter version, finding where to insert at once
 1. find where to insert based on start, use insert to insert the interval
 2. merge the intervals if intersection exists
     - create a new answer list
