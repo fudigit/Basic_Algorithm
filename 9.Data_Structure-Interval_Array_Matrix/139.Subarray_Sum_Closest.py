@@ -8,6 +8,7 @@ sum(i+1, j) = 0
 - the closest pair must be adjasent since sorted
 3. prefix_sum[j] - prefix_sum[i] = smallest, sum(i+1, j) is cloest to zero
 
+O(nlogn)
 '''
 class Solution:
     """
