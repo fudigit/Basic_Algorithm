@@ -1,7 +1,7 @@
 '''
-heap v1, not as good
+heap v1, massy code
 3 ways to do this
- - use min heap
+ - use min heap, O(Nlog(k))
  
 1. create a matrix of tuples to track row index and column index
 - when pop, with the tuple, we can find the next tuple to push
@@ -45,7 +45,7 @@ class Solution:
         return new
 
 '''
-heap v2
+heap v2, O(Nlog(k))
 create the tuple on the go!
  
 how to track the location of poped integer and get to the next integer of the same row?
