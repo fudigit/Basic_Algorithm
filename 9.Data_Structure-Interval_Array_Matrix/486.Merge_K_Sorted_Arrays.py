@@ -42,3 +42,40 @@ class Solution:
             else:
                 continue
         return new
+
+'''
+3 ways to do this
+ - use min heap
+ 
+how to track the location of poped integer and get to the next integer of the same row?
+- create the tuple on the go!
+- tuple = (val, x, y) to track the position of integer
+ 
+ 
+bugs
+1. the bound of j: len(arrays[i]) - 1
+2. how to get the next integer for the same row? (arrays[i][j + 1], i, j)
+3. when initilizing, what to do if array = []?
+'''
+import heapq
+class Solution:
+    """
+    @param arrays: k sorted integer arrays
+    @return: a sorted array
+    """
+    def mergekSortedArrays(self, arrays):
+        # initilizing heap
+        heap = []
+        for index, array in enumerate(arrays):
+            if array != []:
+                heapq.heappush(heap, (array[0], index, 0))
+        
+        # pop heap, push the next into heap
+        new = []
+        while heap:
+            val, i, j = heapq.heappop(heap)
+            new.append(val)
+            
+            if j < len(arrays[i]) - 1:
+                heapq.heappush(heap, (arrays[i][j + 1], i, j + 1))
+        return new
