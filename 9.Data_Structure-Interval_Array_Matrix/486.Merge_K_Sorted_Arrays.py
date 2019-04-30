@@ -1,4 +1,5 @@
 '''
+heap v1, not as good
 3 ways to do this
  - use min heap
  
@@ -44,13 +45,12 @@ class Solution:
         return new
 
 '''
-3 ways to do this
- - use min heap
+heap v2
+create the tuple on the go!
  
 how to track the location of poped integer and get to the next integer of the same row?
-- create the tuple on the go!
 - tuple = (val, x, y) to track the position of integer
- 
+- different from linked list: Node.next finds the next node
  
 bugs
 1. the bound of j: len(arrays[i]) - 1
