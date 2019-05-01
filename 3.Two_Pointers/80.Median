@@ -1,0 +1,40 @@
+class Solution:
+    """
+    @param nums: A list of integers
+    @return: An integer denotes the middle number of the array
+    """
+    def median(self, nums):
+        
+        # find kth largest
+        if len(nums) % 2 == 1:
+            k = len(nums)//2 + 1
+        else:
+            k = len(nums)//2 + 1
+            
+        middle = self.partition(len(nums) - k, nums, 0, len(nums) - 1)
+        return middle
+        
+    def partition(self, k, nums, start, end):
+        # base case
+        if start == end:
+            return nums[start]
+            
+        l,r = start, end
+        pivot = nums[(start + end)//2]
+        
+        # partition in asending order
+        while l <= r:
+            while l <= r and nums[l] < pivot:
+                l += 1 
+            while l <= r and nums[r] > pivot:
+                r -= 1
+            if l <= r:
+                nums[l], nums[r] = nums[r], nums[l]
+                l,r = l + 1, r - 1
+        
+        if k <= r:
+            return self.partition(k, nums, start, r)
+        elif k >= l:
+            return self.partition(k, nums, l, end)
+        # r < k < l    
+        return nums[k]
