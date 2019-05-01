@@ -55,7 +55,7 @@ class Solution:
 Use 0 as the reference point for k. 
 Partition the array with pivot, left side values < right side values, check which side k belongs and repeat partition.
 1. sort the array partially in asending order
-2. Transform "finding kth largest" to "finding element has index = (len(A) - k)"
+2. Transform "finding kth largest" to "finding element has index = (len(A) - k)", a.k.a finding n+1-k smallest
 use 0 as the reference point for k. (k = 1, index = len(A) - 1).
 3. return the actual value once kth largest is found
 note: after partition, kth largest many belong to left, right inteval, or bewteen in the 2
