@@ -1,5 +1,5 @@
 '''
-
+1. make sure left and right don't go out of range by specify left < right in all while loops
 '''
 
 class Solution:
