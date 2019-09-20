@@ -1,5 +1,6 @@
 '''
-1. make sure left and right don't go out of range by specify left < right in all while loops
+1. apply a sub while loop and 2 pointers to skip the non alphanumeric items 
+    - in the sub while loop, make sure left pointer < right pointer, so don't go out of range
 '''
 
 class Solution:
