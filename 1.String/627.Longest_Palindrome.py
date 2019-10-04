@@ -24,3 +24,5 @@ class Solution:
             
             
         # write your code here
+
+       # new solution
