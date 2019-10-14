@@ -3,9 +3,46 @@
 
 
 
+'''
+V1. write function to expand from the middle, enumerate odd and even cases
+'''
+class Solution:
+    """
+    @param s: input string
+    @return: the longest palindromic substring
+    """
+    def longestPalindrome(self, s):
+        longest = ''
+
+        for mid in range(len(s)):
+            
+            sub_odd = self.middle_expand(s, mid, mid)
+            if len(sub_odd) > len(longest):
+                longest = sub_odd
+            sub_even = self.middle_expand(s, mid, mid + 1)
+            if len(sub_even) > len(longest):
+                longest = sub_even
+                
+        return longest
+    
+    
+    def middle_expand(self, s, l, r):
+        while l >= 0 and r <= len(s) -1 and s[l] == s[r]:
+            l -= 1
+            r += 1
+        
+        l_expand = l + 1
+        r_expand = r - 1
+        
+        return s[l_expand:r_expand + 1]
+            
+            
+            
+
+
 
 '''
-# loop the string 2 times, one assuming odd length, one assuming even length
+V2. loop the string 2 times, one assuming odd length, one assuming even length
 '''
 class Solution:
     """
