@@ -2,28 +2,51 @@
 # 2 cases: sub palindrome has even length, sub palindrome has odd length. In the even case, left pointer = right pointer - 1
 
 
+
+
+'''
+# loop the string 2 times, one assuming odd length, one assuming even length
+'''
 class Solution:
     """
     @param s: input string
     @return: the longest palindromic substring
     """
     def longestPalindrome(self, s):
-        l_bound = 0
-        r_bound = len(s) - 1
         max_len = 0
         max_start = None
         max_end = None
+        l_bound, r_bound  = 0, len(s) - 1
         
-        for i in range(len(s)):
-            l = r = i
+        # if palindrome odd, loop through the string
+        for index in range(len(s)):
+            l = r = index
+
+            # expand the current index to its left & right and find the longest palindrom
             while l >= l_bound and r <= r_bound and s[l] == s[r]:
-                sub_len = r - l + 1
-                if sub_len > max_len:
-                    max_len = sub_len
-                    max_start = l
-                    max_end = r
                 l -= 1
                 r += 1
                 
-            max_sub = s[max_start: max_end + 1]
-        return max_sub
+            p_lenth = r - 1 - (l + 1) + 1 # correct? l and r always go out 1 more step
+            print(p_lenth, l, r)
+            if p_lenth > max_len:
+                max_len = p_lenth
+                max_start = l + 1
+                max_end = r - 1 + 1   # string expression 'abc'[0:3]
+        
+        # if even, loop through the string
+        print('try even')
+        for index in range(len(s)):
+            l, r = index, index + 1
+            while l >= l_bound and r <= r_bound and s[l] == s[r]:
+                l -= 1
+                r += 1
+                
+            p_lenth = r - 1 - (l + 1) + 1 # correct? l and r always go out 1 more step
+            print(p_lenth, l, r)
+            if p_lenth > max_len:
+                max_len = p_lenth
+                max_start = l + 1
+                max_end = r - 1 + 1   # string expression 'abc'[0:3]
+        
+        return s[max_start:max_end]
