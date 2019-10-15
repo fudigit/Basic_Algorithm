@@ -30,7 +30,7 @@ class Solution:
 
 
 '''
-Not a good solution: 1. changing i in the for loop. 2. j < len(target) - 1， 意味着target的最后一个元素没有比较，（只到倒数第二个）
+Not a good solution: 1. changing i in the for loop. 2. j < len(target) - 1: 意味着target的最后一个元素没有比较，（只到倒数第二个）
 '''
 
 class Solution:
