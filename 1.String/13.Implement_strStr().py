@@ -1,5 +1,5 @@
 '''
-use i + j to track the char in source, i is the initial index
+V1, use i + j to track the char in source, i is the initial index
 '''
 
 class Solution:
@@ -9,7 +9,11 @@ class Solution:
     @return: return the index
     """
     def strStr(self, source, target):
-    
+        
+        if source is None or target is None:
+            return -1
+        
+        # ''的情况不需要单独解决，
         if target == '':
             return 0
         
@@ -24,10 +28,8 @@ class Solution:
                     j += 1
             
             if j == target_len:
-                return i
-            
+                return i       
         return -1
-
 
 '''
 Not a good solution: 1. changing i in the for loop. 2. j < len(target) - 1: 意味着target的最后一个元素没有比较，（只到倒数第二个）
