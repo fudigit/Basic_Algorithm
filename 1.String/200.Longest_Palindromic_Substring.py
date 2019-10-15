@@ -37,12 +37,61 @@ class Solution:
         return s[l_expand:r_expand + 1]
             
             
+'''
+V2. Dynamic programming based on 2d matrix
+'''
+
+class Solution:
+    """
+    @param s: input string
+    @return: the longest palindromic substring
+    """
+    def longestPalindrome(self, s):
+        if s == '':
+            return ''
+        
+        n = len(s)
+        maxLen = 0
+        max_index = 0
+        dp = [[False]*n for i in range(n)]
+        #print(dp)
+        # update length 1
+        for i in range(n):
+            dp[i][i] = True
+            maxLen = 1
+            max_index = 0
             
+        # update length 2
+        for i in range(n-1):
+            if s[i] == s[i + 1]:
+                print(s[i], s[i+1], i, i+1)
+                dp[i][i+1] = True
+                maxLen = 2
+                max_index = i
+        #print(dp)
+        
+        # dp update length > 2
+        for curLen in range(3, n + 1):
+            for start_index in range(n - curLen + 1):
+                end_index = start_index + curLen - 1
+                #print(start_index, end_index, curLen)
+
+                if s[start_index] == s[end_index] and dp[start_index + 1][end_index - 1] is True:
+                    dp[start_index][end_index] = True
+                    if curLen > maxLen:
+                        maxLen = curLen
+                        max_index = start_index
+        #print(dp, max_index, max_index + maxLen - 1)
+        
+        return s[max_index:max_index + maxLen]
+
+
+
 
 
 
 '''
-V2. loop the string 2 times, one assuming odd length, one assuming even length
+V3. loop the string 2 times, one assuming odd length, one assuming even length
 '''
 class Solution:
     """
