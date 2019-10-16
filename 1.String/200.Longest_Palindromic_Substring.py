@@ -40,7 +40,6 @@ class Solution:
 '''
 V2. Dynamic programming based on 2d matrix
 '''
-
 class Solution:
     """
     @param s: input string
@@ -63,9 +62,8 @@ class Solution:
             
         # update length 2
         for i in range(n-1):
-            if s[i] == s[i + 1]:
-                print(s[i], s[i+1], i, i+1)
-                dp[i][i+1] = True
+            dp[i][i+1] = (s[i] == s[i+1])
+            if dp[i][i+1] == True and maxLen < 2:
                 maxLen = 2
                 max_index = i
         #print(dp)
@@ -74,19 +72,12 @@ class Solution:
         for curLen in range(3, n + 1):
             for start_index in range(n - curLen + 1):
                 end_index = start_index + curLen - 1
-                #print(start_index, end_index, curLen)
-
-                if s[start_index] == s[end_index] and dp[start_index + 1][end_index - 1] is True:
-                    dp[start_index][end_index] = True
-                    if curLen > maxLen:
+                dp[start_index][end_index] = s[start_index] == s[end_index] and dp[start_index+1][end_index -1]
+                if dp[start_index][end_index] is True and curLen > maxLen:
                         maxLen = curLen
                         max_index = start_index
-        #print(dp, max_index, max_index + maxLen - 1)
-        
+
         return s[max_index:max_index + maxLen]
-
-
-
 
 
 
