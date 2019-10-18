@@ -69,4 +69,27 @@ class Solution:
 
         return max_sum
             
+
+''' 
+Brute force，慢得跑不出结果
+O(n^2)
+'''
+class Solution:
+    def maxSubArray(self, nums):
         
+        max_sub = -sys.maxsize
+        
+        # fix left end of the subarray
+        for i in range(len(nums)):
+            r = i
+            i_start_sub = 0
+            
+            # move the right end of the subarray
+            while r <= len(nums) - 1:
+                i_start_sub += nums[r]
+                if i_start_sub > max_sub:
+                    max_sub = i_start_sub
+                r += 1
+        
+        return max_sub
+            
