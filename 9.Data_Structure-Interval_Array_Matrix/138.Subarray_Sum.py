@@ -32,3 +32,29 @@ class Solution:
                 return prefixToIndex[prefix_sum] + 1, i
 
         return -1, -1
+
+
+    
+'''    
+2 刷
+# 坐标为i至j的数的和, sum(i~j) = 0  ==>  prefix(j+1) - prefix(i) = 0 
+# prefix(j+1) = prefix(i)
+'''
+
+class Solution:
+    """
+    @param nums: A list of integers
+    @return: A list of integers includes the index of the first number and the index of the last number
+    """
+    def subarraySum(self, nums):
+        prefix_dict = {}
+        prefix_dict[0] = 0
+        
+        prefix = 0
+        for i in range(len(nums)):
+            prefix += nums[i]
+            if prefix not in prefix_dict:
+                prefix_dict[prefix] = i + 1
+            elif prefix in prefix_dict:
+                print(prefix_dict)
+                return [prefix_dict[prefix], i + 1 - 1]
