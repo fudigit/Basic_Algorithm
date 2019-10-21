@@ -58,6 +58,15 @@ use tuple to get prefix_sum and index, this is better then hashtable, since can 
 2 刷
 '''
 
+'''
+求最接近于0的sub array, 等同于找最接近于0的两个prefix sum之差。怎么找？将prefix sum排序，两两求差
+两个技巧1.prefix sum，2. 对prefix sum排序
+基础：1.构造prefix sum，明白arraysub头尾index和prefix_sum index的关系 2.用tuple来存index
+3. enumerate(): give value, and count; object.sort():
+
+TC: O(nlogn)
+'''
+
 class Solution:
     """
     @param: nums: A list of integers
@@ -66,10 +75,10 @@ class Solution:
     def subarraySumClosest(self, nums):
         prefix_vs_index = [(0, -1)]
         
-        for num in nums:
-            prefix_vs_index.append((prefix_vs_index[-1][0] + num, prefix_vs_index[-1][1] + 1))
+        for i, num in enumerate(nums):
+            prefix_vs_index.append((prefix_vs_index[-1][0] + num, i))
         
-        prefix_vs_index.sort()
+        prefix_vs_index.sort() # sort can be applied on tuples directly, without specifying the key
         
         closest = sys.maxsize
         
@@ -79,13 +88,8 @@ class Solution:
                 closest = diff
                 index1 = prefix_vs_index[i-1][1]
                 index2 = prefix_vs_index[i][1]
-        if index1 > index2:
-            l = index2 + 1
-            r = index1
-        elif index1 < index2:
-            l = index1 + 1
-            r = index2
-        
-        #print(l, r)
+    
+        l = min(index1, index2) + 1
+        r = max(index1, index2)
         
         return l, r
