@@ -56,9 +56,6 @@ use tuple to get prefix_sum and index, this is better then hashtable, since can 
 
 '''
 2 刷
-'''
-
-'''
 求最接近于0的sub array, 等同于找最接近于0的两个prefix sum之差。怎么找？将prefix sum排序，两两求差
 两个技巧1.prefix sum，2. 对prefix sum排序
 基础：1.构造prefix sum，明白arraysub头尾index和prefix_sum index的关系 2.用tuple来存index
