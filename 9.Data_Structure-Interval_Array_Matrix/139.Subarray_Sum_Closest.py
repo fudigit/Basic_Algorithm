@@ -52,3 +52,40 @@ class Solution:
 '''
 use tuple to get prefix_sum and index, this is better then hashtable, since can record index for dups!
 '''
+
+
+'''
+2 刷
+'''
+
+class Solution:
+    """
+    @param: nums: A list of integers
+    @return: A list of integers includes the index of the first number and the index of the last number
+    """
+    def subarraySumClosest(self, nums):
+        prefix_vs_index = [(0, -1)]
+        
+        for num in nums:
+            prefix_vs_index.append((prefix_vs_index[-1][0] + num, prefix_vs_index[-1][1] + 1))
+        
+        prefix_vs_index.sort()
+        
+        closest = sys.maxsize
+        
+        for i in range(1, len(prefix_vs_index)):
+            diff = prefix_vs_index[i][0] - prefix_vs_index[i-1][0]
+            if diff < closest:
+                closest = diff
+                index1 = prefix_vs_index[i-1][1]
+                index2 = prefix_vs_index[i][1]
+        if index1 > index2:
+            l = index2 + 1
+            r = index1
+        elif index1 < index2:
+            l = index1 + 1
+            r = index2
+        
+        #print(l, r)
+        
+        return l, r
