@@ -1,4 +1,4 @@
-'''
+'''V1
 1,2,3,6,8,9,0,-5,6
 |   |     | |
 0   i     j j+1
@@ -33,7 +33,7 @@ class Solution:
         return max_sub
         
         
-'''
+'''V2
 2刷，拿到题目没印象了
 
 # 构造一个 prefix sum
@@ -70,7 +70,7 @@ class Solution:
         return max_sum
             
 
-''' 
+'''V3
 Brute force，慢得跑不出结果
 O(n^2)
 '''
@@ -93,3 +93,21 @@ class Solution:
         
         return max_sub
             
+'''V4 dp
+https://leetcode.com/problems/maximum-subarray/discuss/20193/DP-solution-and-some-thoughts
+'''
+# define a sub probelm, that if it is solved, it helps solve the next-step sub problem
+# sub problem: local_max(i) is the maximum subarray that ends with nums[i]
+# local_max(i + 1) = max(local_max(i) + nums[i + 1], nums[i + 1])
+# note, local_max(i + 1) = (local_max(i) > 0)? local_max(i) + nums[i + 1] VS nums[i + 1]
+
+class Solution:
+    def maxSubArray(self, nums):
+        global_max = -sys.maxsize
+        local_max = -sys.maxsize
+        
+        for n in nums:
+            local_max = max(local_max + n, n)
+            global_max = max(global_max, local_max)
+        
+        return global_max
