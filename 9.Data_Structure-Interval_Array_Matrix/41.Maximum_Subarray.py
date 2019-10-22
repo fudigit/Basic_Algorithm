@@ -111,3 +111,22 @@ class Solution:
             global_max = max(global_max, local_max)
         
         return global_max
+
+    
+# 由左向右遍历，每加入一个新元素前，看之前的array sum是否>0, 换言之是否带来增益。
+# 如果<0，则没有增益，一定不属于max subarray。和V4方法类似
+
+class Solution:
+    def maxSubArray(self, nums):
+        if nums == [] or nums is None:
+            return 0
+        
+        global_max = -sys.maxsize
+        pos_sum = 0
+        
+        for n in nums:
+            pos_sum = pos_sum + n
+            global_max = max(global_max, pos_sum)
+            pos_sum = max(pos_sum, 0)
+        
+        return global_max
