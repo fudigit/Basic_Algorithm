@@ -79,4 +79,36 @@ class Solution:
             subset.pop() #backtracking
             
         
+# 2 刷
+class Solution:
+    """
+    @param nums: A set of numbers
+    @return: A list of lists
+    """
+    def subsets(self, nums):
+        result = []
+        if nums == None:
+            return result
+        
+        nums = sorted(nums)
+        self.dfs(nums, 0, [], result)
+        
+        return result
+        
+        
+    # definition: for each integer from left to right, decide if to include in the subset or not 
+    def dfs(self, nums, index, sub, result):
+        
+        if index == len(nums):
+            result.append(sub[:])
+            return
             
+        # left, to not include
+        self.dfs(nums, index + 1, sub, result)
+
+        
+        # right, to include
+        sub.append(nums[index])
+        self.dfs(nums, index + 1, sub, result)
+        sub.pop()  #注意这里回溯的重要性，否则sub会保持append到result时候的状态。
+
