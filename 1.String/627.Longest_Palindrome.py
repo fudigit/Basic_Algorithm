@@ -83,3 +83,32 @@ class Solution:
             return length
         return length + 1
                 
+
+# 数对子，数多少char出现了基数次
+class Solution:
+    """
+    @param s: a string which consists of lowercase or uppercase letters
+    @return: the length of the longest palindromes that can be built
+    """
+    def longestPalindrome(self, s):
+        freq_hash = {}
+        
+        for char in s:
+            if char not in freq_hash:
+                freq_hash[char] = 1 
+            else:
+                freq_hash[char] += 1
+        
+        
+        # count pairs， count odd appearence:
+        pairs = 0
+        odd = 0
+        
+        for key, value in freq_hash.items():
+            pairs += value // 2
+            odd += value % 2
+        
+        if odd > 0:
+            return 2*pairs + 1
+        
+        return 2*pairs
