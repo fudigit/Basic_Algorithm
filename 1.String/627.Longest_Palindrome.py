@@ -34,8 +34,21 @@ class Solution:
     """
     def longestPalindrome(self, s):
         
-        char_odd = {}
+        single_occurrence = {}
         
         for char in s:
-            if char in char_odd:
+            if char in single_occurrence:
+                del single_occurrence[char]
+            else:
+                single_occurrence[char] = 1
+        
+        single_count = 0
+
+        for key, value in single_occurrence.items():
+            single_count += value
+        
+        if single_count == 0:
+            return len(s) - single_count
+        
+        return len(s) - single_count + 1
                 
