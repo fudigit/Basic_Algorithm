@@ -112,3 +112,31 @@ class Solution:
         self.dfs(nums, index + 1, sub, result)
         sub.pop()  #注意这里回溯的重要性，否则sub会保持append到result时候的状态。
 
+
+## 2刷，可拓展到排列搜索的递归模板
+class Solution:
+    """
+    @param nums: A set of numbers
+    @return: A list of lists
+    """
+    def subsets(self, nums):
+        result = []
+        if nums == None:
+            return result
+        
+        nums.sort()
+        self.dfs(nums, 0, [], result)
+        
+        return result
+    
+        
+    def dfs(self, nums, start, subset, result):
+        
+        result.append(subset[:])
+        # no need for return, taken cared by for
+    
+        for i in range(start, len(nums)):
+            
+            subset.append(nums[i])
+            self.dfs(nums, i + 1, subset, result)
+            subset.pop()
