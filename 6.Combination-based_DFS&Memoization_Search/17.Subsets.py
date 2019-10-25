@@ -140,3 +140,26 @@ class Solution:
             subset.append(nums[i])
             self.dfs(nums, i + 1, subset, result)
             subset.pop()
+
+# 不加入index作为参数，而用判断语句确保加入新的元素
+class Solution:
+    """
+    @param nums: A set of numbers
+    @return: A list of lists
+    """
+    def subsets(self, nums):
+        result = []
+        if nums == None:
+            return result
+        nums = sorted(nums)
+        self.dfs(nums, [], result)
+        return result
+    
+    def dfs(self, nums, subset, result):
+        result.append(subset[:])
+        for i in range(len(nums)):
+            if len(subset) == 0 or len(subset) > 0 and subset[-1] < nums[i]:
+                subset.append(nums[i])
+                self.dfs(nums, subset, result)
+                subset.pop()
+            
