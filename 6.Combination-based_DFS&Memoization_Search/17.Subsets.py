@@ -163,3 +163,35 @@ class Solution:
                 self.dfs(nums, subset, result)
                 subset.pop()
             
+#bfs
+from collections import deque
+
+class Solution:
+    """
+    @param nums: A set of numbers
+    @return: A list of lists
+    """
+    def subsets(self, nums):
+        result = []
+        if nums == None:
+            return result
+            
+        nums = sorted(nums)
+
+    
+        # bfs
+        queue = deque([])
+        
+        while queue:
+            subset = queue.popleft()[:]
+            result.append(subset)
+            for i in range(len(nums)):
+                if subset == [] or subset[-1] < nums[i]:
+                    new_subset = subset[:]
+                    
+                    new_subset.append(nums[i])
+                    queue.append(subset)
+                    
+        
+        return result
+            
