@@ -79,7 +79,7 @@ class Solution:
             subset.pop() #backtracking
             
         
-# 2 刷
+# 2 刷 决策树法
 class Solution:
     """
     @param nums: A set of numbers
