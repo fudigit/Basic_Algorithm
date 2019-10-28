@@ -171,27 +171,26 @@ class Solution:
     @param nums: A set of numbers
     @return: A list of lists
     """
+    # bfs
     def subsets(self, nums):
         result = []
         if nums == None:
             return result
-            
-        nums = sorted(nums)
-
-    
-        # bfs
-        queue = deque([])
         
+        nums = sorted(nums)
+        self.bfs(nums, result)
+        return result
+        
+    def bfs(self, nums, result):
+        queue = deque()
+        queue.append([])
         while queue:
             subset = queue.popleft()[:]
             result.append(subset)
             for i in range(len(nums)):
                 if subset == [] or subset[-1] < nums[i]:
-                    new_subset = subset[:]
+                    new_sub = subset[:]
+                    new_sub.append(nums[i])
+                    queue.append(new_sub)
                     
-                    new_subset.append(nums[i])
-                    queue.append(subset)
-                    
-        
-        return result
             
