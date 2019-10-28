@@ -193,4 +193,32 @@ class Solution:
                     new_sub.append(nums[i])
                     queue.append(new_sub)
                     
-            
+from collections import deque
+
+
+
+# bitwise operation
+class Solution:
+    """
+    @param nums: A set of numbers
+    @return: A list of lists
+    """
+    # bfs
+    def subsets(self, nums):
+        result = []
+        if nums == None:
+            return result
+        
+        nums = sorted(nums)
+        n = len(nums)
+        
+        for i in range(1 << n):
+            subset = []
+            for j in range(n):
+                print(i&1, j)
+                if i & 1 << j != 0:
+                    subset.append(nums[j])
+            result.append(subset)
+        return result
+      
+      
