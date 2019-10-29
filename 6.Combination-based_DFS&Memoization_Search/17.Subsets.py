@@ -162,7 +162,7 @@ class Solution:
         
     def bfs(self, nums, result):
         queue = deque([])
-        queue.append([]) #注意1.deque是如何定义的。 2.这道题，deque里装的是lists
+        queue.append([]) #注意1.deque是如何定义的。 2.这道题，deque里装的是lists，而非单个元素
         while queue:
             subset = queue.popleft()[:]
             result.append(subset)
