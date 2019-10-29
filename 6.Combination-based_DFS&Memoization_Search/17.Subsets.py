@@ -29,28 +29,7 @@ class Solution:
         # 3. exist of recursion: 已经得到方案
         if index == len(nums):
             results.append(subset[:])
-            return
-        
-        # 2. devide and solve
-        # pick nums[index]
-        subset.append(nums[index])
-        self.dfs(nums, index + 1, subset, results)
-        
-        # does not pick nums[index]
-        subset.pop()
-        self.dfs(nums, index + 1, subset, results)
-        
-        
-'''
-# 排列搜索类递归
-# use dfs to find all subsets based on a fixed head-subset
-[]
-
-'''
-
-class Solution:
-    """
-    @param nums: A set of numbers
+            return of numbers
     @return: A list of lists
     """
     def subsets(self, nums):
@@ -182,8 +161,8 @@ class Solution:
         return result
         
     def bfs(self, nums, result):
-        queue = deque()
-        queue.append([])
+        queue = deque([])
+        queue.append([]) #注意1.deque是如何定义的。 2.这道题，deque里装的是lists
         while queue:
             subset = queue.popleft()[:]
             result.append(subset)
