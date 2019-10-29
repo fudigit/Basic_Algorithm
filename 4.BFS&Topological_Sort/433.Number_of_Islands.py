@@ -51,3 +51,47 @@ class Solution:
     def isValid(self, grid, x, y):
         n, m = len(grid), len(grid[0])
         return 0 <= x < n and 0 <= y < m and grid[x][y] == True
+
+
+# 2刷
+from collections import deque
+
+class Solution:
+    """
+    @param grid: a boolean 2D matrix
+    @return: an integer
+    """
+    def numIslands(self, grid):
+        
+        count = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == True:
+                    self.bfs_erase(grid, i, j)
+                    count += 1
+        return count
+                
+    def bfs_erase(self, grid, i, j):
+        queue = deque()
+        queue.append((i,j))
+        #grid[i][j] = False   # 写在开头和for循环里不会超时
+        
+        while queue:
+            x, y = queue.popleft()
+            grid[x][y] = False    # <-- True变成False写While里面，会超时
+            
+            for delta_x, delta_y in [(0,1),(0,-1),(-1,0),(1,0)]:
+                x_next = x + delta_x
+                y_next = y + delta_y
+                if self.in_bound_true(grid, x_next, y_next):
+                    #grid[x_next][y_next] = False   # 写在开头和for循环里不会超时
+                    queue.append((x_next, y_next))
+                    
+    def in_bound_true(self, grid, i, j):
+        if not (0 <= i < len(grid) and 0 <= j < len(grid[0])):
+            return False
+        if grid[i][j] == False:
+            return False
+        return True
+        
+        
