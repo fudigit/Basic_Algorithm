@@ -53,7 +53,6 @@ class Solution:
         return 0 <= x < n and 0 <= y < m and grid[x][y] == True
 
 
-# 2刷
 from collections import deque
 
 class Solution:
@@ -64,27 +63,30 @@ class Solution:
     def numIslands(self, grid):
         
         count = 0
+        # loop through entire matrix, when encounter an island, count, then erase the island
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if grid[i][j] == True:
                     self.bfs_erase(grid, i, j)
                     count += 1
         return count
-                
+        
+        # use bfs to erase the island
     def bfs_erase(self, grid, i, j):
         queue = deque()
         queue.append((i,j))
-        #grid[i][j] = False   # 写在开头和for循环里不会超时
+        grid[i][j] = False 
         
         while queue:
+            print(queue)
             x, y = queue.popleft()
-            grid[x][y] = False    # <-- True变成False写While里面，会超时
+            #grid[x][y] = False    # <- 写While里面，点出队时才会标记，造成未标记的点重复入队。
             
             for delta_x, delta_y in [(0,1),(0,-1),(-1,0),(1,0)]:
                 x_next = x + delta_x
                 y_next = y + delta_y
                 if self.in_bound_true(grid, x_next, y_next):
-                    #grid[x_next][y_next] = False   # 写在开头和for循环里不会超时
+                    grid[x_next][y_next] = False # 一碰到就标记为false
                     queue.append((x_next, y_next))
                     
     def in_bound_true(self, grid, i, j):
@@ -93,5 +95,3 @@ class Solution:
         if grid[i][j] == False:
             return False
         return True
-        
-        
