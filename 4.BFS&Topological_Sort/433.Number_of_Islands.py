@@ -64,6 +64,7 @@ class Solution:
         
         count = 0
         # loop through entire matrix, when encounter an island, count, then erase the island
+        grid = grid
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if grid[i][j] == True:
@@ -95,3 +96,5 @@ class Solution:
         if grid[i][j] == False:
             return False
         return True
+        
+        
