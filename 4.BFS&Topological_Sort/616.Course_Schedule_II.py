@@ -49,7 +49,8 @@ class Solution:
 # 2. 如果不把问题转化为图的形式, 找到入度为0的点，就需要O(n*m). 对每个course，遍历prerequite里m种关系
 #  -但是拓扑排序的时间复杂度是O(n + m), aka: O(Vertex + Edge)，所以需要预处理
 
-from collections import deque
+
+#from collections import deque
 class Solution:
     """
     @param: numCourses: a total of n courses
