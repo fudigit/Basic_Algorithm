@@ -5,6 +5,8 @@ class Solution:
     @return: the minimum radius standard of heaters
     """
     def findRadius(self, houses, heaters):
+        if heaters == []:
+            return -1
         
         hourses = sorted(houses)
         heaters = sorted(heaters)
@@ -14,13 +16,13 @@ class Solution:
         
         while start + 1 < end:
             mid = start + (end - start)//2
-            print(start, end, mid)
+            #print(start, end, mid)
             if self.cover_houses(mid, houses, heaters):
                 end = mid
             else:
                 start = mid
         
-        print(start, end)
+        #print(start, end)
         if self.cover_houses(start, houses, heaters):
             return start
         return end
@@ -28,8 +30,9 @@ class Solution:
     def cover_houses(self, radius, houses, heaters):
         heater_cur = 0
         for h in range(len(houses)):
-            while heater_cur < len(heaters) - 1 and abs(houses[h] - heaters[heater_cur]) > radius:
+            while heater_cur < len(heaters) and abs(houses[h] - heaters[heater_cur]) > radius:
                 heater_cur += 1
-            if abs(houses[h] - heaters[heater_cur]) > radius:
+            if heater_cur == len(heaters):
+                #print(houses[h] - heaters[heater_cur])
                 return False
         return True
