@@ -1,3 +1,4 @@
+# 需要开一个result来保留每一个遇到的节点值
 """
 Definition of TreeNode:
 class TreeNode:
@@ -11,13 +12,17 @@ class Solution:
     @param root: A Tree
     @return: Inorder in ArrayList which contains node values.
     """
-    self.result = []
+    
     def inorderTraversal(self, root):
+        
+        result = []
+        self.dfs(root, result)
+        return result
+    
+    def dfs(self, root, result):
         if not root:
             return
         
-        inorderTraversal(root.left)
-        result.append(root.value)
-        inorderTraversal(root.right)
-        
-        return self.result
+        self.dfs(root.left, result)
+        result.append(root.val)
+        self.dfs(root.right, result)
