@@ -32,4 +32,29 @@ class Solution:
         total_uniq = slow + 1
         return total_uniq
         
+
+# 2刷
+class Solution:
+    """
+    @param nums: an array of integers
+    @return: the number of unique integers
+    """
+    def deduplication(self, nums):
+        if not nums:
+            return 0
+    
+        unique = set()
+        slow, fast = 0, 0
         
+        count = 0
+        while fast < len(nums):
+            if nums[fast] not in unique:
+                unique.add(nums[fast])
+                nums[slow] = nums[fast]
+                fast += 1
+                slow += 1
+                count += 1
+            else:
+                fast += 1
+        
+        return count
