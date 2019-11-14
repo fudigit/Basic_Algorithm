@@ -27,3 +27,35 @@ class Solution:
             self.dfs(candidates, target - candidates[i], i, combination, results)
             combination.pop()
             #self.level -= 1
+
+### 2 刷
+class Solution:
+    """
+    @param candidates: A list of integers
+    @param target: An integer
+    @return: A list of lists of integers
+    """
+    def combinationSum(self, candidates, target):
+        candi = list(set(candidates))
+        candi = sorted(candi)
+        
+        result = []
+        count = 0
+        self.dfs_helper(candi, 0, target, [], result, count)
+        return result
+        
+        
+    def dfs_helper(self, candidates, start, target, combination, result, count):
+        count += 1
+        print(combination, count)
+        if target < 0:
+            return
+        
+        if target == 0:
+            return result.append(combination[:])
+        
+        for i in range(start, len(candidates)):
+            combination.append(candidates[i])
+            self.dfs_helper(candidates, i , target - candidates[i], combination, result, count)
+            combination.pop()
+            
