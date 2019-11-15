@@ -27,3 +27,24 @@ class Solution:
             A[father] = tmp
             
             k = father # track the index of A[k] after swap
+
+# 2刷
+class Solution:
+    """
+    @param: A: Given an integer array
+    @return: nothing
+    """
+    def sift_up(self, A, new):
+        while new != 0:
+            father = (new - 1)//2
+            if A[new] < A[father]:
+                A[new], A[father] = A[father], A[new]
+                new = father
+            else:
+                break
+                
+    
+    def heapify(self, A):
+        for i in range(len(A)):
+            self.sift_up(A, i)
+        
