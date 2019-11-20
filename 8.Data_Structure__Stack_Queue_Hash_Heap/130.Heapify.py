@@ -52,8 +52,7 @@ class Solution:
                 node = father
             else:
                 break
-    
-    
+  
     def heapify(self, A):
         # 使用"sift_up"，是在已有heap的末端加入一个新元素，然后对新元素sift_up。所以要从左到右依次
         # 如果为当前node为最终node的A不是min heap，当前node到root的路径上的一串node是没有被排序的
