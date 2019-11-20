@@ -60,3 +60,33 @@ class Solution:
             self.sift_up(A, node)
         
         return A
+
+# sift down 解法
+class Solution:
+    """
+    @param: A: Given an integer array
+    @return: nothing
+    """
+    def sift_down(self, A, node):
+        # 从最底层的爸爸节点开始
+        while node*2 + 1 < len(A):
+            print(node)
+            # find the son with smaller value
+            smaller_son = node*2 + 1
+            if node*2 + 2 < len(A):
+                son2 = node*2 + 2
+                if A[son2] < A[smaller_son]:
+                    smaller_son = son2
+            
+            if A[smaller_son] < A[node]:
+                A[smaller_son], A[node] = A[node], A[smaller_son]
+                node = smaller_son
+            else:
+                break
+
+
+    def heapify(self, A):
+        for node in range(len(A)-1, -1, -1):
+            self.sift_down(A, node)
+        
+        return A
