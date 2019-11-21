@@ -108,12 +108,12 @@ class Solution:
         
         return result
     
-        
     def dfs(self, nums, start, subset, result):
         
         result.append(subset[:])
         # no need for return, taken cared by for
-    
+'''# 内部调用dfs，起始位置必须是i+1,如此保证枚举每个路径唯一
+     原则是，找到以i为开头的所有路径，subset可以理解成找到包含了A的所有子集'''    
         for i in range(start, len(nums)):
             
             subset.append(nums[i])
