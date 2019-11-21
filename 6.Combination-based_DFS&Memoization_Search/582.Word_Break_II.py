@@ -51,3 +51,39 @@ class Solution:
         memo[s] = partitions
         
         return partitions
+        
+        
+# 找出整条路径，然后一次性加入到partitions里        
+class Solution:
+    """
+    @param: s: A string
+    @param: wordDict: A set of words.
+    @return: All possible sentences.
+    """
+    def wordBreak(self, s, wordDict):
+        
+        partition = []
+        partitions = []
+        memo1 = {}
+        self.dfs(s, 0, partition, partitions, wordDict, memo1)
+        return partitions
+    
+    
+    
+    def dfs(self, s, index, partition, partitions, wordDict, memo):
+        if index == len(s):
+            partitions.append(' '.join(partition[:]))
+            return
+        
+        
+        
+        for i in range(index, len(s)):
+            word = s[index:i + 1]
+            if word not in wordDict:
+                continue
+            
+            partition.append(word)
+            self.dfs(s, i + 1, partition, partitions, wordDict, memo)
+            partition.pop()
+            
+        memo[index] = partition
