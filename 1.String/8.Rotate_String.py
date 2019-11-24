@@ -1,3 +1,9 @@
+'''
+教训:
+1. list slice那一段，搞不清楚，
+2. python list slice的起点和终点怎么写搞不清楚
+3. 不同变量指向同一个mutable object，改变这个mutable object随即改变所有变量
+'''
 class Solution:
     """
     @param str: An array of char
