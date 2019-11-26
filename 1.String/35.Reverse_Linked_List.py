@@ -34,11 +34,11 @@ class Solution:
         print(cur.val)
         
         while cur:
-            print(cur.val, prev)
+            #print(cur.val, prev)
             after = cur.next
             cur.next = prev
             
             prev = cur
             cur = after
-            print(cur, prev.val)
+            #print(cur, prev.val)
         return prev
