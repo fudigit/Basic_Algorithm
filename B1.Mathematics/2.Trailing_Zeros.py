@@ -1,4 +1,3 @@
-# v1 
 class Solution:
     """
     @param: n: An integer
@@ -12,11 +11,11 @@ class Solution:
             n = n//5
         
         return res
-        
-        
+
         # trailing zero总数 = n//5 + n//25 + n//125 + n//625 + n//3125 + ...
         # 为什么这就是尾部0的总数？出现0，需要出现2*5，而2的数量比5多
-        # 实际上统计5这个因子出现的总个数
+        # 实际上统计5这个因子在1-n中出现的总次数
+
 
 
 
