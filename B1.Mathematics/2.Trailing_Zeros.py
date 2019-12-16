@@ -1,3 +1,4 @@
+# v1. O(log(n))
 class Solution:
     """
     @param: n: An integer
@@ -18,7 +19,13 @@ class Solution:
 
 
 
-
+#v2, recursion
+class Solution:
+    def trailingZeros(self, n):
+        if n < 5:
+            return 0
+        res = n//5 + self.trailingZeros(n//5)
+        return res
 
 # v.brute_force, O(n), does not pass!
 class Solution:
