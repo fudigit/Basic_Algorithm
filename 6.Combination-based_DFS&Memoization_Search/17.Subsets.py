@@ -31,7 +31,7 @@ class Solution:
             results.append(subset[:])
             return of numbers
     @return: A list of lists
-    """
+    
     def subsets(self, nums):
         results = []
         if nums == None:
