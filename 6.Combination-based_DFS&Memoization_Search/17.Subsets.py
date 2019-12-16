@@ -9,16 +9,11 @@ for [1,2]
 '''
 
 class Solution:
-    """
-    @param nums: A set of numbers
-    @return: A list of lists
-    """
     def subsets(self, nums):
         results = []
         if nums == None:
             return results
         nums.sort()
-        
         self.dfs(nums, 0, [], results)
         return results
         
@@ -29,14 +24,27 @@ class Solution:
         # 3. exist of recursion: 已经得到方案
         if index == len(nums):
             results.append(subset[:])
-            return of numbers
-    @return: A list of lists
-    
+            return
+        
+        # 2. devide and solve
+        # pick nums[index]
+        subset.append(nums[index])
+        self.dfs(nums, index + 1, subset, results)
+        
+        # does not pick nums[index]
+        subset.pop()
+        self.dfs(nums, index + 1, subset, results)
+
+'''
+# 排列搜索类递归
+# use dfs to find all subsets based on a fixed head-subset
+[]
+'''
+class Solution:
     def subsets(self, nums):
         results = []
         if nums == None:
             return results
-        
         nums.sort()
         self.dfs(nums, 0, [], results)
         return results
@@ -49,15 +57,13 @@ class Solution:
         results.append(subset[:])
         
         for i in range(startIndex, len(nums), 1):
-            # start index = 1
             # [1] => [1,2]
             # 去寻找以 [1,2] 开头的所有子集
-            subset.append(nums[i])                  # go find subset starts from [1,2]
-            self.dfs(nums, i + 1, subset, results)               # all subset starts from [1,2] are found!
+            subset.append(nums[i])
+            self.dfs(nums, i + 1, subset, results)
             # [1,2] => [1], 下一个dfs状态和这次相同：[1] => [1,3]
             subset.pop() #backtracking
             
-        
 # 2 刷 决策树法
 class Solution:
     """
