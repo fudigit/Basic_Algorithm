@@ -1,4 +1,4 @@
-#V1. DFS + Memoization,需要加大recursion limit
+#v1. DFS + Memoization,需要加大recursion limit
 import sys
 sys.setrecursionlimit(100000000)
 class Solution:
@@ -32,6 +32,36 @@ class Solution:
         memo[startIndex] = False
         return False
         
+
+#v2. DP解法，根据前0-i个字符否可以拆分，来推导第前i+1个字符是否可以拆分
+class Solution:
+    def wordBreak(self, s, dict):
+        
+        if len(dict) == 0:
+            return len(s) == 0
+            
+        n = len(s)
+        dp = [False] * (n+1)
+        dp[0] = True
+        #dp[j] 代表前j个字符是否可以拆分
+        
+        max_len = max([len(word) for word in dict])
+        
+        # 枚举结尾，看前i个字符是否可以拆分
+        for i in range(1, n + 1):
+            # 对于每个结尾，枚举最后一段的长度
+            for j in range(1, min(i+1, max_len+1)):
+                # 最后一段的前一段必须可拆分
+                if dp[i-j] != True:
+                    continue
+                # 如果前一段可以拆分，最后一段必须在字典里
+                if s[i-j:i] in dict:
+                    dp[i] = True
+                    break
+                
+        return dp[n]
+
+
 
 
 # 超时解法，用全局变量ans[0]记录是否成功
