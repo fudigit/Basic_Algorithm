@@ -18,7 +18,7 @@ class Solution:
             return False  # 避免冗余计算
             
         for i in range(startIndex, len(s)):
-            if i - startIndex + 1 > max_len:
+            if i - startIndex + 1 > max_len:    #剪枝。如果不break，会去搜索长度大于max_len的单词，造成大量无用搜索
                 break
             word = s[startIndex:i+1]
             #print(i, word)
@@ -29,7 +29,7 @@ class Solution:
             if res == True:
                 return True
         
-        memo[startIndex] = False
+        memo[startIndex] = False # 程序结束，意味着startIndex之后的string不可拆分
         return False
         
 
